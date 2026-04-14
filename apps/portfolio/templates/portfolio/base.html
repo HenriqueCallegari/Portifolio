@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ owner.name }} — Portfólio{% endblock %}</title>
+
+  {% load static %}
+
+  <!-- Google Fonts: Clash Display + DM Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner container">
+      <a href="{% url 'portfolio:home' %}" class="nav__logo">
+        <span class="nav__logo-bracket">&lt;</span>HC
+        <span class="nav__logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li>
+          <a href="mailto:{{ owner.email }}" class="btn btn--outline btn--sm">
+            Contato
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── CONTEÚDO DA PÁGINA ──────────────────────────────── -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">
+        © 2026 <strong>{{ owner.name }}</strong> — Feito com Django 
+      </p>
+      <div class="footer__links">
+        <a href="mailto:{{ owner.email }}">{{ owner.email }}</a>
+        <span>·</span>
+        <a href="tel:{{ owner.phone }}">{{ owner.phone }}</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'portfolio/js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

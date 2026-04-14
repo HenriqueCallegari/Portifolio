@@ -1,0 +1,205 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════ -->
+<section class="hero" id="sobre">
+  <div class="hero__bg-grid"></div>
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Disponível para oportunidades
+      </div>
+
+      <h1 class="hero__title">
+        Olá, sou<br>
+        <span class="hero__name">{{ owner.name }}</span>
+      </h1>
+
+      <p class="hero__role">
+        <span class="mono">&gt;_</span>
+        Desenvolvedor Python · Aprendiz de TI · ADS @ UNISO
+      </p>
+
+      <p class="hero__bio">
+        Aprendiz de TI na <strong>Ibrafer MBM</strong>, construindo sistemas internos
+        com <strong>Python, Streamlit e PostgreSQL</strong>. Automatizo processos,
+        resolvo chamados pelo <strong> GLPI </strong> e faço modificações em aplicações existentes. Em paralelo,
+        curso <strong>Análise e Desenvolvimento de Sistemas</strong> na UNISO e
+        desenvolvo projetos acadêmicos e pessoais.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#projetos" class="btn btn--primary">Ver projetos</a>
+        <a href="mailto:{{ owner.email }}" class="btn btn--ghost">
+          Falar comigo →
+        </a>
+      </div>
+    </div>
+    <!-- Card bonitinho dev kkkk-->
+    <div class="hero__card">
+      <div class="hero__card-header">
+        <span class="hero__card-dot" style="background:#f87171"></span>
+        <span class="hero__card-dot" style="background:#fbbf24"></span>
+        <span class="hero__card-dot" style="background:#34d399"></span>
+        <span class="hero__card-title mono">henrique.py</span>
+      </div>
+      <pre class="hero__code"><code><span class="c">class</span> <span class="fn">Henrique</span>:
+    nome     = <span class="s">"Henrique Callegari"</span>
+    cidade   = <span class="s">"Sorocaba – SP"</span>
+    curso    = <span class="s">"ADS · UNISO (2º sem)"</span>
+    empresa  = <span class="s">"Ibrafer MBM"</span>
+
+    stack = [
+        <span class="s">"Python"</span>, <span class="s">"Django"</span>,
+        <span class="s">"Streamlit"</span>, <span class="s">"PostgreSQL"</span>,
+        <span class="s">"Claude AI"</span>, <span class="s">"Active Directory"</span>,
+    ]
+
+    <span class="c">def</span> <span class="fn">missao</span>(self):
+        <span class="c">return</span> <span class="s">"Resolver problemas usando programação."</span></code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════════════════ -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__tag mono">01 / skills</span>
+      <h2 class="section__title">Habilidades & Ferramentas</h2>
+    </div>
+
+    <div class="skills-grid">
+      {% for categoria, lista in skills_by_category.items %}
+      <div class="skill-group">
+        <h3 class="skill-group__title">{{ categoria }}</h3>
+        <div class="skill-list">
+          {% for skill in lista %}
+          <div class="skill-item">
+            <div class="skill-item__top">
+              <span class="skill-item__icon">{{ skill.icon }}</span>
+              <span class="skill-item__name">{{ skill.name }}</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar__fill" style="--level: {{ skill.level }}"></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% empty %}
+      <p class="empty-state">Nenhuma skill cadastrada ainda. <a href="/admin/">Adicione pelo admin →</a></p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PROJETOS
+══════════════════════════════════════════════════════ -->
+<section class="section section--dark" id="projetos">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__tag mono">02 / projetos</span>
+      <h2 class="section__title">Projetos</h2>
+    </div>
+
+    <div class="projects-grid">
+      {% for project in projects %}
+      <article class="project-card {% if project.featured %}project-card--featured{% endif %}">
+        <div class="project-card__header">
+          <div class="project-card__status project-card__status--{{ project.status }}">
+            {{ project.get_status_display }}
+          </div>
+          {% if project.featured %}
+          <span class="project-card__badge">⭐ Destaque</span>
+          {% endif %}
+        </div>
+
+        <h3 class="project-card__title">{{ project.title }}</h3>
+        <p class="project-card__desc">{{ project.description }}</p>
+
+        <div class="project-card__stack">
+          {% for tech in project.tech_list %}
+          <span class="tag">{{ tech }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="project-card__footer">
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" class="btn btn--ghost btn--sm" target="_blank">
+            GitHub ↗
+          </a>
+          {% endif %}
+          {% if project.demo_url %}
+          <a href="{{ project.demo_url }}" class="btn btn--primary btn--sm" target="_blank">
+            Demo ↗
+          </a>
+          {% endif %}
+        </div>
+      </article>
+      {% empty %}
+      <p class="empty-state">Nenhum projeto cadastrado ainda. <a href="/admin/">Adicione pelo admin →</a></p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     EXPERIÊNCIA
+══════════════════════════════════════════════════════ -->
+<section class="section" id="experiencia">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__tag mono">03 / experiência</span>
+      <h2 class="section__title">Trajetória</h2>
+    </div>
+
+    <div class="timeline">
+      {% for exp in experiences %}
+      <div class="timeline__item">
+        <div class="timeline__dot {% if exp.is_current %}timeline__dot--active{% endif %}"></div>
+        <div class="timeline__content">
+          <div class="timeline__meta">
+            <span class="timeline__type timeline__type--{{ exp.exp_type }}">
+              {% if exp.exp_type == "trabalho" %}💼{% else %}🎓{% endif %}
+              {{ exp.get_exp_type_display }}
+            </span>
+            <span class="timeline__period mono">{{ exp.period }}</span>
+          </div>
+          <h3 class="timeline__role">{{ exp.role }}</h3>
+          <p class="timeline__company">{{ exp.company }}</p>
+          <p class="timeline__desc">{{ exp.description }}</p>
+        </div>
+      </div>
+      {% empty %}
+      <p class="empty-state">Nenhuma experiência cadastrada ainda. <a href="/admin/">Adicione pelo admin →</a></p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════════════════ -->
+<section class="cta">
+  <div class="container cta__inner">
+    <h2 class="cta__title">Vamos conversar?</h2>
+    <p class="cta__sub">Aberto a oportunidades em TI, suporte e desenvolvimento.</p>
+    <a href="mailto:{{ owner.email }}" class="btn btn--primary btn--lg">
+      {{ owner.email }}
+    </a>
+  </div>
+</section>
+
+{% endblock %}

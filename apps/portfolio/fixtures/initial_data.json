@@ -1,0 +1,131 @@
+[
+  {"model": "portfolio.skill", "pk": 1,  "fields": {"name": "Python",          "category": "linguagem",  "level": 5, "icon": "🐍", "order": 1}},
+  {"model": "portfolio.skill", "pk": 2,  "fields": {"name": "HTML / CSS",       "category": "linguagem",  "level": 3, "icon": "🌐", "order": 2}},
+  {"model": "portfolio.skill", "pk": 3,  "fields": {"name": "SQL",              "category": "linguagem",  "level": 4, "icon": "📊", "order": 3}},
+  {"model": "portfolio.skill", "pk": 4,  "fields": {"name": "Streamlit",        "category": "framework",  "level": 5, "icon": "⚡", "order": 1}},
+  {"model": "portfolio.skill", "pk": 5,  "fields": {"name": "Django",           "category": "framework",  "level": 2, "icon": "🎸", "order": 2}},
+  {"model": "portfolio.skill", "pk": 6,  "fields": {"name": "PostgreSQL",       "category": "banco",      "level": 4, "icon": "🐘", "order": 1}},
+  {"model": "portfolio.skill", "pk": 7,  "fields": {"name": "MySQL",            "category": "banco",      "level": 3, "icon": "🗄️", "order": 2}},
+  {"model": "portfolio.skill", "pk": 8,  "fields": {"name": "Active Directory", "category": "infra",      "level": 4, "icon": "🏢", "order": 1}},
+  {"model": "portfolio.skill", "pk": 9,  "fields": {"name": "Linux Server",     "category": "infra",      "level": 2, "icon": "🐧", "order": 2}},
+  {"model": "portfolio.skill", "pk": 10, "fields": {"name": "GLPI",             "category": "ferramenta", "level": 4, "icon": "🎫", "order": 1}},
+  {"model": "portfolio.skill", "pk": 11, "fields": {"name": "Git",              "category": "ferramenta", "level": 2, "icon": "🔀", "order": 2}},
+  {"model": "portfolio.skill", "pk": 12, "fields": {"name": "Pacote Office",    "category": "ferramenta", "level": 4, "icon": "📋", "order": 3}},
+  {"model": "portfolio.skill", "pk": 13, "fields": {"name": "Claude AI",        "category": "ia",         "level": 5, "icon": "🤖", "order": 1}},
+
+  {
+    "model": "portfolio.experience", "pk": 1,
+    "fields": {
+      "company": "Ibrafer MBM",
+      "role": "Aprendiz de TI",
+      "exp_type": "trabalho",
+      "start_date": "2025-11-01",
+      "end_date": null,
+      "is_current": true,
+      "order": 1,
+      "description": "Atendimento e gerenciamento de chamados via GLPI. Administração de desktops — manutenção, montagem e onboarding. Controle de acessos pelo Active Directory. Desenvolvimento de sistemas internos com Python, Streamlit e PostgreSQL: módulo SST/Resíduos com KPIs e CRUD, sistema de reembolso Ibrafer/Panfer com workflow de liquidação, e módulo de OCR para extratos bancários Bradesco."
+    }
+  },
+  {
+    "model": "portfolio.experience", "pk": 2,
+    "fields": {
+      "company": "Toyota Boshoku",
+      "role": "Aprendiz Fiscal / Financeiro",
+      "exp_type": "trabalho",
+      "start_date": "2025-02-01",
+      "end_date": "2025-10-01",
+      "is_current": false,
+      "order": 2,
+      "description": "Faturamento e conferência de notas via Synchro. Lançamento de notas fiscais no Oracle. Emissão e cancelamento de NFS-e na Prefeitura de Sorocaba. Cadastro de fornecedores, controle de reembolso e inserção de dados em Excel."
+    }
+  },
+  {
+    "model": "portfolio.experience", "pk": 3,
+    "fields": {
+      "company": "UNISO — Universidade de Sorocaba",
+      "role": "Análise e Desenvolvimento de Sistemas",
+      "exp_type": "educacao",
+      "start_date": "2025-06-01",
+      "end_date": "2027-12-01",
+      "is_current": true,
+      "order": 3,
+      "description": "Graduação em ADS — 3º semestre. Projetos acadêmicos aplicando engenharia de software, banco de dados, desenvolvimento web e boas práticas."
+    }
+  },
+
+  {
+    "model": "portfolio.project", "pk": 1,
+    "fields": {
+      "title": "Sistema SST / Resíduos — Ibrafer",
+      "slug": "sst-residuos-ibrafer",
+      "status": "concluido",
+      "featured": true,
+      "order": 1,
+      "tech_stack": "Python, Streamlit, PostgreSQL, Plotly",
+      "github_url": "",
+      "demo_url": "",
+      "description": "Dashboard de gestão de resíduos industriais com KPIs em tempo real, gráficos Plotly e CRUD completo em quatro abas. Suporte total a tema claro/escuro via bridge JavaScript.",
+      "details": "Módulo interno da Ibrafer para controle de SST e destinação de resíduos. Implementado com detecção dinâmica de tema Streamlit via polling JS, CSS tokens e componentes HTML isolados em iframes."
+    }
+  },
+  {
+    "model": "portfolio.project", "pk": 2,
+    "fields": {
+      "title": "Sistema de Reembolso Ibrafer / Panfer",
+      "slug": "reembolso-ibrafer-panfer",
+      "status": "concluido",
+      "featured": true,
+      "order": 2,
+      "tech_stack": "Python, Streamlit, PostgreSQL, psycopg2",
+      "github_url": "",
+      "demo_url": "",
+      "description": "Workflow de liquidação de despesas com seleção de solicitações, confirmação por etapas e persistência de estado entre reruns do Streamlit.",
+      "details": ""
+    }
+  },
+  {
+    "model": "portfolio.project", "pk": 3,
+    "fields": {
+      "title": "OCR para Extratos Bancários Bradesco",
+      "slug": "ocr-bradesco",
+      "status": "concluido",
+      "featured": false,
+      "order": 3,
+      "tech_stack": "Python, pdfplumber, Tesseract, PyMuPDF",
+      "github_url": "",
+      "demo_url": "",
+      "description": "Extração automática de dados de PDFs image-only do Bradesco Net Empresa com fallback em cascata: pdfplumber → Tesseract OCR (300 DPI) → PyMuPDF.",
+      "details": ""
+    }
+  },
+  {
+    "model": "portfolio.project", "pk": 4,
+    "fields": {
+      "title": "TI Tools v1.0 — Desktop App",
+      "slug": "ti-tools",
+      "status": "concluido",
+      "featured": false,
+      "order": 4,
+      "tech_stack": "Python, Tkinter, psutil, matplotlib",
+      "github_url": "",
+      "demo_url": "",
+      "description": "Aplicação desktop Windows com 19 arquivos e ~2.600 linhas. Ferramentas de rede, otimizador de sistema, gerenciador de processos, tema claro/escuro e exportação de relatórios.",
+      "details": ""
+    }
+  },
+  {
+    "model": "portfolio.project", "pk": 5,
+    "fields": {
+      "title": "Belle Time — Portal Ella's",
+      "slug": "belle-time",
+      "status": "academico",
+      "featured": false,
+      "order": 5,
+      "tech_stack": "HTML, CSS, JavaScript, Python, MySQL",
+      "github_url": "",
+      "demo_url": "",
+      "description": "Sistema de agendamento para salão de beleza desenvolvido em equipe na UNISO. Front-end responsivo e back-end Python com banco MySQL.",
+      "details": ""
+    }
+  }
+]
