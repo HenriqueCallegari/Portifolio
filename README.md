@@ -1,6 +1,6 @@
 # 🐍 Portfólio — Henrique Callegari
 
-Portfólio pessoal construído com **Django 4.2** seguindo boas práticas de estrutura, separação de responsabilidades e dados gerenciáveis pelo admin.
+Portfólio pessoal construído com **Django 5.2** seguindo boas práticas de estrutura, separação de responsabilidades e dados gerenciáveis pelo admin.
 
 ---
 
